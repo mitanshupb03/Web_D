@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css">
+    <title>Marks</title>
+    <style>
+        *
+        {
+            margin: 0;padding: 0;
+        }
+        body {
+            background: rgb(217, 11, 11);
+         
+        }
+        .markscard
+        {
+            padding-top: 1vh;
+            margin: auto;
+            margin-top: 15vh;
+            background-color: white;
+            width: 40vw;
+            height: 70vh;
+            border-radius: 15px;
+            box-shadow: 2px 2px 16px 8px rgba(0, 0, 0, 0.5);
+        }
+        .markscard:hover{
+            /* box-shadow: 2px 2px 16px 8px rgba(229, 229, 229, 0.5); */
+            box-shadow: none;
+        }
+        .markscard h1{
+            /* margin-top: 100px; */
+            /* color: red; */
+            text-align: center;
+        }
+        form
+        {
+            /* border: 2px solid green; */
+            padding: 10px;
+            padding-top: 0;
+            margin-top: 2vh ;
+            height: 50vh;
+        }
+        form>button:hover
+        {
+            transform: rotate(300deg);
+            
+            transition: ease all 0.8s;
+            /* text-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5); */
+        }
+       .markscard>form>.inputs
+       {
+            /* height: 20vh; */
+            width: 100%;
+            /* background:  yellow; */
+       }
+       .markscard>form>.inputs>input{
+        width: 70%;
+        height: 4vh;
+        margin-top: 0.2vh;
+        margin-left: 15%;
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+        font-size: 1.15rem;
+        /* padding-left: 2vw; */
+        text-align: center;
+       }
+       .markscard>form>.buttons
+       {
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+            /* border: 2px solid yellow; */
+            /* height: 12vh; */
+            width: 100%;
+       }
+        button.button1:hover
+       {
+         color: white !important;
+         background: red !important;
+       }
+       button.button2:hover
+       {
+         color: white !important;
+         background: green !important;
+       }
+       button.button3:hover
+       {
+         color: white !important;
+         background: rgb(24, 24, 231) !important;
+       }
+
+       .markscard>form>.results
+       {
+        margin-top: 5px;
+            width: auto;
+            height: 12vh;
+            /* border: 2px solid green; */
+            display: flex;
+            justify-content: center;
+       }
+       .markscard>form>.results>div
+       {
+         width: 33%;
+         /* border: 2px solid black; */
+        
+         /* justify-content: center; */
+       }
+    </style>
+
+    <script>
+        function valcheck(refTxt)
+        {
+                var strv=refTxt.value;
+                if(strv<40)
+                {
+                    refTxt.style.color="red";
+                }
+                else
+                {
+                    refTxt.style.color="green";
+                }
+        }
+        function check(stra,strb,strc)
+        {
+            if(stra==""||strb==""||strc=="")
+        {
+            alert("Please fill all the values");
+            return true;
+        }
+        else if(isNaN(stra) || isNaN(strb)  || isNaN(strc))
+        {
+            alert("Please fill all the numeric values");
+            return true;
+        }
+        else if(stra>100||stra<0||strb>100||strb<0||strc>100||strc<0)
+        {
+            alert("Please enter values b/w 0-100");
+            return true;
+        }
+    }
+        function total()
+        {
+            let stra=document.querySelector("#txtcpp").value;
+            let strb=document.querySelector("#txtpython").value;
+            let strc=document.querySelector("#txtjava").value;
+            let x=  check(stra, strb, strc); 
+            if(x==true)        
+        {
+            return;
+        }
+               let nva=parseFloat(stra);
+            let nvb=parseFloat(strb);
+            let nvc=parseFloat(strc);
+            // input(nva,nvb,nvc);
+            let sum=nva+nvb+nvc;
+            
+            document.querySelector("#txtTotal").value=sum;
+            if(sum<120)
+        {
+            document.querySelector("#txtTotal").style.color="red";
+        }else
+        {
+            document.querySelector("#txtTotal").style.color="green";
+        }
+        document.querySelector(".button2").disabled=false;
+        }
+        function per()
+        {
+            // let per=(nva+nvb+nvc)/3;
+            let total=document.querySelector("#txtTotal").value;
+            // alert(total);
+        //     if(total=="")
+        // {
+        //     alert("Firstly, Find the total marks");
+        //     return;
+        // }
+            let per=total/3;
+
+            document.querySelector("#txtper").value=per;
+            if(per<40)
+        {
+            document.querySelector("#txtper").style.color="red";
+        }else
+        {
+            document.querySelector("#txtper").style.color="green";
+        }
+            // return per;
+            document.querySelector(".button3").disabled=false;
+        }
+        function res()
+        {
+                let per= document.querySelector("#txtper").value;
+                // if(per=="")
+                // {
+                //     alert("Please enter correct values");
+                //     return;
+                // }
+                if(per>=90)
+                {
+                    let gra="O";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="green";
+                    return;
+                }
+                else if(per>=85&&per<90)
+                {
+                    let gra="A+";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="green";
+                    return;
+                }
+                else if(per>=80&&per<85)
+                {
+                    let gra="A";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="green";
+                    return;
+                }
+                else if(per>=75&&per<80)
+                {
+                    let gra="B+";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="orange";
+                    return;
+                }
+                else if(per>=60&&per<75)
+                {
+                    let gra="B";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="orange";
+
+                    return;
+                }
+                else if(per>=50&&per<60)
+                {
+                    let gra="C";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="yellow";
+
+                    return;
+                }
+                else if(per>=40&&per<50)
+                {
+                    let gra="P";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="yellow";
+
+                    return;
+                }
+                else
+                {
+                    let gra="F";
+                    document.querySelector("#txtGrade").value=gra;
+                    document.querySelector("#txtGrade").style.color="red";
+
+                    return;
+                }
+        }
+
+    </script>
+</head>
+<body>
+    <main>
+        <div class="markscard">
+            <h1 >Mark's Card</h1>
+            <form>
+                <button type="re" style="position: absolute;right: 32vw;top: 19vh; width: 3vw; height: 6vh; color: red; background-color: white; font-size: 1.45rem; transition: ease all 0.8s;border: none;"><i class="fa-sharp-duotone fa-solid fa-rotate-right"></i></button>
+               <div class="inputs">
+                <h2 style="margin-left: 15%;">C++</h2>
+                <input type="text" placeholder="Enter Your marks" autofocus id="txtcpp" onblur="valcheck(txtcpp);">
+                <h2 style="margin-left: 15%; margin-top: 1vh;">Python</h2>
+                <input type="text" placeholder="Enter Your marks" id="txtpython"  onblur="valcheck(txtpython);">
+                <h2 style="margin-left: 15%; margin-top: 1vh;">Java</h2>
+                <input type="text" placeholder="Enter Your marks" id="txtjava"  onblur="valcheck(txtjava);">
+               </div>
+               <div class="buttons">
+                    <button type="button" class="button1" style="border: 2px solid red; color:red;width: 30%;height: 8vh; background-color: white;border-radius: 10px;font-size: 1.05rem;margin-left: 0%;" onclick="total();">Total</button>
+                    <button type="button" class="button2" disabled style="border: 2px solid green; color:green;width: 30%;height: 8vh; background-color: white;border-radius: 10px;font-size: 1.05rem;margin-left: 2%;" onclick="per();">Percentage</button>
+                    <button type="button" class="button3" disabled style="border: 2px solid rgb(24, 24, 231); color: rgb(24, 24, 231);width: 30%;height: 8vh; background-color: white;border-radius: 10px;font-size: 1.05rem;margin-left: 2%;" onclick="res();">Result</button>
+               </div>
+               <div class="results">
+                 <div>
+                    <h2 style="text-align: center;">Total</h2>
+                    <input type="text" id="txtTotal"  style="width: 7vw; height: 4vh;margin-left: 2.5vw;margin-top: 5px; font-size:1.15rem; text-align: center;" readonly>
+                 </div>
+                 <div>
+                    <h2 style="text-align: center;">Percentage</h2>
+                    <input type="text" id="txtper" style="width: 7vw; height: 4vh;margin-left: 2.5vw;margin-top: 5px; font-size:1.15rem; text-align: center;" readonly>
+                 </div>
+                 <div>
+                    <h2 style="text-align: center;">Result</h2>
+                    <input type="text"  id="txtGrade" style="width: 7vw; height: 4vh;margin-left: 2.5vw;margin-top: 5px; font-size:1.15rem; text-align: center;" readonly>
+                 </div>
+                </div>
+                
+               </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

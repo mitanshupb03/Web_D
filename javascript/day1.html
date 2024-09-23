@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function doHello()
+        {
+            // console.log("HELLO WORLD!");
+            // document.write("Hello WORLD!");
+            alert("HEllo BRO!");
+        }
+       function dovar()
+       {
+        //  var x;
+        //  alert(x);
+        //  var x=10; //intger
+        //  alert(x);
+        //  var x=10.5;// float
+        //  alert(x);
+        // var x="String";//sting
+        // alert(x);
+        // var x=true;//boolean
+        // alert(x);
+
+        // let x=10; // Another way of declaring variable
+        // alert(x);
+        const per=10.5; //IN this variable can't be modified
+            // per=2.4;//error
+            alert(per);
+       }
+       function dootp()
+       {
+         let otp= prompt("Enter the otp");
+
+// === to compare value and datatype 
+// == to compare value
+         if(otp==null)  //on cancel
+           {
+               alert("Fill Otp PLz") ;
+               return;
+           }
+         if(otp=="")   //ok with empty
+           {
+            alert("Fill otp before OK");
+            return;
+           }
+            if(otp==="786")   ///== compare contents not their Data Type
+                alert("Valid");
+            else    
+                alert("Invalid");
+       }
+       function SURE()
+       {
+         let x= confirm("Are you sure??")
+
+         if(x==true)
+         {
+            alert("Deleted");
+         }
+         else
+         {
+            alert(" Not Deleted");
+         }
+       }
+    </script>
+</head>
+<body>
+    <center>
+        <button type="button" style="color: white;border-radius: 10px; background-color: blue; width: 8vw;height: 8vh;" onclick="doHello();">Hello</button>
+        <button type="button" style="color: white;border-radius: 10px; background-color: red; width: 8vw;height: 8vh;" onclick="dovar();">VARIALBLE</button>
+        <button type="button" style="color: white;border-radius: 10px; background-color: green; width: 8vw;height: 8vh;" onclick="dootp();"> ENTER OTP</button>
+        <button type="button" style="color: white;border-radius: 10px; background-color: yellow; width: 8vw;height: 8vh;" onclick="SURE();"> SURE</button>
+    </center>
+</body>
+</html>
