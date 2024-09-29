@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css">
+    <title>Check box</title>
+    <style>
+        .img {
+            width: 25%;
+            height: 25%;
+        }
+
+        .content button:hover {
+            color: black !important;
+            border: 2px solid black !important;
+        }
+    </style>
+    <script>
+        function check(a, img1, img2, img3, img4) {
+            img1.checked = a.checked;
+            img2.checked = a.checked;
+            img3.checked = a.checked;
+            img4.checked = a.checked;
+        }
+
+        function do_check(a, img1, img2, img3, img4) {
+            if (img1.checked == true && img2.checked == true && img3.checked == true && img4.checked == true) {
+                a.checked = true;
+            }
+            else {
+                a.checked = false;
+            }
+        }
+
+        function dodelete(a,content,divimg1,divimg2,divimg3,divimg4,img1,img2,img3,img4){
+            // alert("Hello");
+            if(a.checked==true)
+        {
+            // alert("Delete all");
+            content.hidden=true;
+        document.getElementById("noitem").hidden=false;
+        }
+        if(img1.checked==true)
+        {
+            // alert("Delete all");
+            divimg1.hidden=true;
+        }
+        if(img2.checked==true)
+        {
+            // alert("Delete all");
+            divimg2.hidden=true;
+        }
+        if(img3.checked==true)
+        {
+            // alert("Delete all");
+            divimg3.hidden=true;
+        }
+        if(img4.checked==true)
+        {
+            // alert("Delete all");
+            divimg4.hidden=true;
+        }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="content" id="content">
+        <div style="margin-top: 5vh; font-size: 2.85rem;">
+
+            <center><input type="checkbox" name="" id="a" onclick="check(a,img1,img2,img3,img4);" style="width: 4vh;
+        height: 4vh;"><b>Select All</b></center>
+        </div>
+        <div style="display: flex; margin-top: 10vh;">
+            <div class="img" id="divimg1"><img src="/Web_D/javascript/images/offer-beauty.png" alt="" width="100%"
+                    height="250px"><br><br>
+                <center><input type="checkbox" name="" id="img1" onclick="do_check(a,img1,img2,img3,img4);"
+                        style="width: 3vh; height: 3vh;"></center>
+            </div>
+            <div class="img" id="divimg2"><img src="/Web_D/javascript/images/offer-medicine.jpg" alt="" width="100%"
+                    height="250px"><br><br>
+                <center><input type="checkbox" name="" id="img2" onclick="do_check(a,img1,img2,img3,img4);"
+                        style="width: 3vh; height: 3vh;"></center>
+            </div>
+            <div class="img" id="divimg3"><img src="/Web_D/javascript/images/offer-wellness.avif" alt="" width="100%"
+                    height="250px"><br><br>
+                <center><input type="checkbox" name="" id="img3" onclick="do_check(a,img1,img2,img3,img4);"
+                        style="width: 3vh; height: 3vh;"></center>
+            </div>
+            <div class="img" id="divimg4"><img src="/Web_D/javascript/images/otp.jpg" alt="" width="100%" height="250px"><br><br>
+                <center><input type="checkbox" name="" id="img4" onclick="do_check(a,img1,img2,img3,img4);"
+                        style="width: 3vh; height: 3vh;"></center>
+            </div>
+
+
+        </div>
+        <button type="button" id="delete" onclick="dodelete(a,content,divimg1,divimg2,divimg3,divimg4,img1,img2,img3,img4);"
+            style="width: 8vw; height: 8vh;font-size: 1.25rem; background: white; border:2px solid #cccccc; color: #cccccc; margin-left: 45vw;margin-top: 5vh;"><i
+                class="fa-solid fa-trash-can"></i> Delete</button>
+    </div>
+        <div id="noitem" hidden style=" margin: auto; font-size: 2.55rem;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" >No item Available!!!</div>
+
+
+
+</body>
+
+</html>

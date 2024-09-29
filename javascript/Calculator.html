@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css">
+    <title>Calculator</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #d5d4d4;
+        }
+
+        .calculator_body {
+            padding-top: 3vh;
+            margin: auto;
+            width: 30vw;
+            height: 80vh;
+            background-color: white;
+            border-radius: 15px;
+            margin-top: 10vh;
+            box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.5);
+        }
+
+        .calculator_body .screen {
+            width: 28vw;
+            height: 25vh;
+            /* border: 2px solid rgb(243, 9, 9); */
+            margin: auto;
+            border-radius: 15px;
+            background: grey;
+        }
+        .calculator_body .screen #txtresult
+        {
+            height: 12.2vh; 
+            background: transparent;
+            width: 25.8vw;
+            border-top-left-radius: 13px;
+            border-top-right-radius: 13px;
+        color: white;
+
+            border: none;
+            outline: none;
+            text-align: end;
+            margin: auto;
+            direction: ltr;
+          
+
+        }
+        .calculator_body .screen #txtinput
+        {
+            height: 12.2vh; 
+            background: transparent;
+            width: 25.8vw;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border: none;
+            outline: none;
+            text-align: end;
+            margin: auto;
+            direction: ltr;
+
+        }
+
+        .calculator_body .keys
+        {
+            margin: auto;
+            margin-top: 5vh;
+            width: 28vw;
+            height: auto;
+            /* border: 2px solid red; */
+
+        }
+ 
+        .calculator_body .keys .row
+        {
+            height: 9.2vh;
+         display: flex;
+            /* border: 2px solid red; */
+        }   
+        
+        .calculator_body .keys .row .buttons
+        {
+            height: 9.2vh;
+            width: 7vw;
+            /* border: 2px solid black; */
+        }
+        .calculator_body .keys .row .buttons button{
+            width: 6.5vw;
+            height: 7.2vh;
+            margin-top: 1vh;
+            margin-left: 0.25vw;
+            border-radius: 15px;
+            border: none;
+            font-size: 1.35rem;
+            font-family: "Times New Roman", Times, serif;
+            color: black;
+        }
+        .calculator_body .keys .row .buttons button:hover
+    {
+        box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.5);
+    }
+    </style>
+    <script>
+        function result()
+        {
+           document.getElementById("txtresult").value=eval(document.getElementById("txtinput").value);
+        }
+        function inputs(restxt)
+        {
+            // alert(restxt.value);
+            if(restxt.value==="_")
+        {
+            document.getElementById("txtinput").value= document.getElementById("txtinput").value.slice(0, -1);
+            var str = document.getElementById("txtinput").value;
+        }
+        else
+        {
+            var str = document.getElementById("txtinput").value;
+            str=str+restxt.value;
+        }    
+        document.getElementById("txtinput").value=str;
+        document.getElementById("txtresult").value=eval(str);
+
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div class="calculator_body">
+        <form >
+
+        <div class="screen">
+            <input type="text" id="txtresult" readonly style="padding: 0 1vw; font-size: 3.15rem;">
+            <input type="text" id="txtinput" readonly autofocus style="padding: 0 1vw; font-size: 2.15rem;">  
+        </div>
+
+        <div class="keys">
+            <div class="row">
+                <div class="buttons">
+                    <button type="reset">AC</button>
+                </div>
+                <div class="buttons">
+                    <button type="button" id="dot" onclick="inputs(dot);" value=".">.</button>
+                </div>
+             <div class="buttons">
+                <button type="button" style="font-size: 1.25rem;" id="backspace" onclick="inputs(backspace);" value="_"><i class="fa-sharp fa-solid fa-delete-left"></i></button>
+             </div>
+                <div class="buttons">
+                    <button type="button" id="divide" value="/" onclick="inputs(divide);"><i class="fa-solid fa-divide"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="buttons">
+                    <button type="button" id="seven" value="7" onclick="inputs(seven);">7</button>
+                </div>
+                <div class="buttons">
+                    <button type="button" id="eight" value="8" onclick="inputs(eight);">8</button>
+                </div>
+             <div class="buttons">
+                <button type="button" id="nine" onclick="inputs(nine);" value="9">9</button>
+             </div>
+                <div class="buttons">
+                    <button type="button"  id="multiply" onclick="inputs(multiply);" value="*"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="buttons">
+                    <button type="button"  id="four" onclick="inputs(four);" value="4">4</button>
+                </div>
+                <div class="buttons">
+                    <button type="button"  id="five" onclick="inputs(five);" value="5">5</button>
+                </div>
+             <div class="buttons">
+                <button type="button"  id="six" onclick="inputs(six);" value="6">6</button>
+             </div>
+                <div class="buttons">
+                    <button type="button"  id="minus" onclick="inputs(minus);" value="-"><i class="fa-sharp fa-solid fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="buttons">
+                    <button type="button"  id="three" onclick="inputs(three);" value="3">3</button>
+                </div>
+                <div class="buttons">
+                    <button type="button"  id="two" onclick="inputs(two);" value="2">2</button>
+                </div>
+             <div class="buttons">
+                <button type="button" id="one" onclick="inputs(one);" value="1">1</button>
+             </div>
+                <div class="buttons">
+                    <button type="button"  id="plus" onclick="inputs(plus);" value="+"><i class="fa-sharp fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="buttons">
+                    <button type="button"  id="lb" onclick="inputs(lb);" value="(">(</button>
+                </div>
+                <div class="buttons">
+                    <button type="button"  id="rb" onclick="inputs(rb);" value=")">)</button>
+                </div>
+             <div class="buttons">
+                <button type="button"  id="o" onclick="inputs(o);" value="0">0</button>
+             </div>
+                <div class="buttons">
+                    <button type="button" onclick="result();"><i class="fa-sharp fa-reuglar fa-equals"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    </div>
+
+</body>
+
+</html>
