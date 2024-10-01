@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #cccccc;
+        }
+
+        .main-box {
+            width: 50vw;
+            height: 80vh;
+            margin: auto;
+            margin-top: 10vh;
+            background: white;
+            border: 1.5px solid gray;
+            border-radius: 2vh;
+            box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .main-box .inputs {
+            display: flex;
+            justify-content: center;
+            padding-top: 3vh;
+            /* padding-bottom: 2vh; */
+            font-size: 1.45rem;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .main-box .inputs input {
+            height: 4vh;
+            padding-left: 0.5vw;
+            border: none;
+            border-bottom: 1.5px solid black;
+            /* font-weight: 600; */
+            font-size: 1.15rem;
+
+            outline: none;
+        }
+
+        .main-box .items-capacity {
+            display: flex;
+            justify-content: center;
+            margin-top: 2vh;
+        }
+
+        .main-box .items-capacity .items {
+            width: 33%;
+            /* height: 10vh; */
+            padding: 1vh 0;
+            padding-bottom: 0;
+            /* border: 2px solid red; */
+            font-size: 1.25rem;
+        }
+
+        .main-box .items-capacity .items input {
+            height: 4vh;
+            margin: 1vh;
+            width: 10vw;
+            /* padding-left: 0.5vw; */
+            text-align: center;
+            font-size: 1.15rem;
+            border: none;
+            border-bottom: 1.5px solid black;
+            outline: none;
+        }
+
+        .main-box .choose {
+            display: flex;
+            justify-content: center;
+            margin-top: 2vh;
+            font-size: 1.25rem;
+        }
+
+        .main-box .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 2vh;
+            font-size: 1.25rem;
+        }
+
+        .main-box .buttons div {
+            width: 33%;
+            /* height: 10vh; */
+            padding: 1vh 0;
+            /* border: 2px solid red; */
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-box .buttons div button {
+            height: 8vh;
+            width: 10vw;
+            font-size: 1.15rem;
+            border: 2px solid black;
+            border-radius: 15px;
+        }
+
+        .main-box .buttons div button:hover {
+            color: white;
+            background: #4c4c4c;
+            box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .main-box .items-bill {
+            display: flex;
+            justify-content: center;
+            margin-top: 2vh;
+            font-size: 1.25rem;
+        }
+
+        .main-box .items-bill .items {
+            width: 33%;
+            /* height: 10vh; */
+            padding: 1vh 0;
+            padding-bottom: 0;
+            /* border: 2px solid red; */
+            font-size: 1.25rem;
+        }
+
+        .main-box .items-bill .items input {
+            height: 5vh;
+            margin: 1vh;
+            width: 11vw;
+            /* padding-left: 0.5vw; */
+            font-weight: 550;
+            text-align: center;
+            font-size: 1.15rem;
+            border: 1.5px solid black;
+            /* border-bottom: 1.5px solid black; */
+            outline: none;
+        }
+
+        .main-box .bill {
+            display: flex;
+            justify-content: center;
+            /* border: 2px solid red; */
+            margin-top: 2vh;
+            font-size: 1.25rem;
+        }
+
+        .main-box .bill .units-bill {
+            /* display: flex;
+            justify-content: center; */
+            width: 50%;
+            font-size: 1.25rem;
+        }
+
+        .main-box .bill .total-bill {
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            font-size: 1.25rem;
+        }
+
+        .main-box .bill input {
+            height: 5vh;
+            margin: 1vh;
+            width: 8vw;
+            /* padding-left: 0.5vw; */
+            font-weight: 550;
+            text-align: center;
+            font-size: 1.15rem;
+            border: 1.5px solid black;
+            /* border-bottom: 1.5px solid black; */
+            outline: none;
+        }
+
+        .main-box .Discount {
+            display: flex;
+            justify-content: center;
+            margin-top: 2vh;
+        }
+
+        .main-box .Discount .discount-box {
+            font-size: 1.25rem;
+            /* border: 2px solid red; */
+        }
+
+        .main-box .Discount .discount-box input {
+            width: 8vw;
+            height: 5vh;
+            font-weight: 550;
+            text-align: center;
+            font-size: 1.15rem;
+            border: 1.5px solid black;
+            /* border-bottom: 1.5px solid black; */
+            outline: none;
+
+        }
+
+        .main-box .grand-total {
+            margin-top: 2vh;
+            display: flex;
+            justify-content: center;
+            font-size: 1.35rem;
+
+        }
+
+        .main-box .grand-total #grand {
+            color: red;
+
+            text-shadow: 2px 0px 4px 2px rgba(0, 0, 0, 0.5);
+            font-size: 1.45rem;
+            margin-left: 0.5vw;
+            font-weight: 600;
+
+        }
+    </style>
+
+
+    <script>
+        function chk(reftxt)
+        {
+            var val=reftxt.value;
+            // alert("reftxt");
+            if(val===""){
+                alert("Fill the value");
+                return;
+            }
+            else if(isNaN(val))
+            {
+                alert("Fill in numbers");
+                reftxt.style.color="red";
+                return;
+            }else{
+                reftxt.style.color="black";
+            }
+
+            
+        }
+
+        
+
+        function bill(units, unitsbill,acs,coolers,fans,acbill,coolerbill,fanbill) {
+
+            let res=0;
+            var x = units.value;
+            if(x===""){
+                alert("Fill the units");
+                return;
+            }
+            if(isNaN(x))
+            {
+                alert("Fill in no.");
+                return;
+            }
+            if(isNaN(acs.value))
+            {
+                alert("Fill in no.");
+                return;
+            }
+            if(isNaN(coolers.value))
+            {
+                alert("Fill in no.");
+                return;
+            }
+            if(isNaN(fans.value))
+            {
+                alert("fill in no.");
+                return;
+            }
+
+            
+            if (x <= 100) {
+                res=x*2;
+            }
+            else{
+                res=x*5;
+            }
+            unitsbill.value=res;
+
+                acbill.value=acs.value*100;
+                coolerbill.value=coolers.value*80;
+                fanbill.value=fans.value*50;
+
+                let total = parseFloat(unitsbill.value) + parseFloat(acbill.value) + parseFloat(coolerbill.value) + parseFloat(fanbill.value);
+                document.getElementById("totalbill").value = total;
+        }
+
+        function givediscount()
+        {
+            let dis=0;
+            let tb=document.querySelector("#totalbill").value;
+
+            if(document.getElementById("com").checked==true)
+        {
+            // alert("Give me discount");
+            dis= tb*20/100;
+            document.getElementById("disc").value=dis;
+            
+        }
+        if(document.getElementById("dom").checked==true)
+        {
+            // alert("Give me discount");
+            dis= tb*10/100;
+            document.getElementById("disc").value=dis;  
+        }
+
+        }
+
+        function netbill()
+        {
+            let x= document.getElementById("totalbill").value - document.getElementById("disc").value;
+            
+            document.getElementById("grand").innerHTML=x;
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+    <div class="main-box">
+        <form>
+            <div class="inputs">
+                <span><b>Units :-</b> &nbsp;</span><input type="text" placeholder="00" id="units" autofocus onblur="chk(this);">  
+            </div>
+
+
+            <div class="items-capacity">
+                <div class="items">
+                    <center>
+                        <span>No. of AC</span>
+                        <input type="text" placeholder="00" id="acs" value="0" onblur="chk(this);">
+                    </center>
+                </div>
+                <div class="items">
+                    <center>
+                        <span>No. of Cooler</span>
+                        <input type="text" placeholder="00" id="coolers" value="0" onblur="chk(this);">
+                    </center>
+                </div>
+                <div class="items">
+                    <center>
+                        <span>No. of Fan</span>
+                    <input type="text" placeholder="00" id="fans" value="0" onblur="chk(this);">
+                    </center>
+                </div>
+            </div>
+
+
+            <div class="choose">
+                <input type="radio" name="Connection" id="com" checked><span
+                    style="margin-left: 0.5vw;margin-right: 2vw;">Commercial</span>
+                <input type="radio" name="Connection" id="dom"><span style="margin-left: 0.5vw;">Domestic</span>
+
+            </div>
+
+
+            <div class="buttons">
+                <div><button type="button" onclick="bill(units, unitsbill,acs,coolers,fans,acbill,coolerbill,fanbill);">Bill</button></div>
+                <div><button type="button" onclick="givediscount();">Discount</button></div>
+                <div><button type="button" onclick="netbill();">Net. Bill</button></div>
+            </div>
+
+
+            <div class="items-bill">
+                <div class="items">
+                    <center>
+                        <span>AC Bill</span>
+                        <input type="text" id="acbill" readonly>
+                    </center>
+                </div>
+                <div class="items">
+                    <center>
+                        <span>Cooler Bill</span>
+                        <input type="text" id="coolerbill" readonly>
+                    </center>
+                </div>
+                <div class="items">
+                    <center>
+                        <span>Fan Bill</span>
+                        <input type="text" id="fanbill" readonly>
+                    </center>
+                </div>
+            </div>
+
+
+            <div class="bill">
+                <div class="units-bill">
+                    <center>
+                        <span>Units Bill :</span>
+                        <input type="text" id="unitsbill" readonly>
+                    </center>
+                </div>
+                <div class="total-bill">
+                    <center>
+                        <span>Total Bill :</span>
+                        <input type="text" id="totalbill" readonly>
+                    </center>
+                </div>
+            </div>
+
+            <div class="Discount">
+                <div class="discount-box">
+                    <center>
+                        <span>Discount :</span>
+                        <input type="text" id="disc" readonly>
+                    </center>
+                </div>
+            </div>
+            <div class="grand-total">
+                <span><b>The Net bill You have to Pay is :- Rs </b></span>
+                <span id="grand"> </span>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
